@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de eventos en JS</title>
+</head>
+<body>
+    <h1 id="titulo">Actividad Manejo de Eventos JS</h1>
+    <button id="boton">Mostrar </button>
+
+    <div id="panel" style="display: none;">
+        <form>
+            <label>Cambiar título de la página:<input type="text" id="nuevo-titulo" >
+            </label>
+            <br>
+            <label>Cambiar color de fondo:<input type="color" id="color-fondo">
+            </label>
+            <br>
+            <label>Activar área de comentarios:<input type="checkbox" id="activar">
+            </label>
+        </form>
+    </div>
+
+    <textarea id="comentarios" style="display: none;" placeholder="Escribe aquí..."></textarea>
+
+    <ul id="lista">
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+    </ul>
+
+    <script>
+     
+     document.getElementById("boton").onclick = function() {
+        let panel = document.getElementById("panel");
+        if (panel.style.display === "none") {
+            panel.style.display = "flex";
+        } else {
+            panel.style.display = "none";
+        }
+    };
+
+    document.getElementById("nuevo-titulo").onchange = function() {
+        let titulo = document.getElementById("nuevo-titulo").value;
+        document.getElementById("titulo").innerHTML = titulo;
+    };
+
+    document.getElementById("color-fondo").onchange = function() {
+        let color = document.getElementById("color-fondo").value;
+        document.body.style.backgroundColor = color;
+    };
+
+    document.getElementById("activar").onchange = function() {
+    let comentarios = document.getElementById("comentarios");
+    if (this.checked) {
+        comentarios.style.display = "block";
+    } else {
+        comentarios.style.display = "none";
+    }
+};
+document.getElementById("lista").onclick = function(evento) {
+    if (evento.target.tagName === "LI") {
+        evento.target.remove();
+    }
+};
+    </script>
+</body>
+</html>
